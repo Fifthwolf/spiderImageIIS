@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>图片获取工具</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <header>
+    <p>图片获取工具</p>
+  </header>
+  <main>
+    <div class="wrapper">
+      <form action="connect.py" method="post">
+        <label for="">页面地址：</label>
+        <br />
+        <input type="text" name="pageAddress" value="http://www.acfun.cn/a/ac4233285"/>
+        <br />
+        <label for="">图片地址格式：</label>
+        <input type="text" name="imageAddress" value="Reserve"/>
+        <br />
+        <label for="">常用页面：</label>
+        <select name="common">
+          <option value="none">不使用</option>
+          <option value="AcFun">AcFun</option>
+          <option value="Bilibili">Bilibili</option>
+        </select>
+        <br />
+        <label for="">指定图片格式：</label>
+        <input type="checkbox" name="imageFormat" value="jpg" checked="checked" /><span>.JPG</span>
+        <input type="checkbox" name="imageFormat" value="png" checked="checked" /><span>.PNG</span>
+        <input type="checkbox" name="imageFormat" value="gif" checked="checked" /><span>.GIF</span>
+        <br />
+        <input type="submit" />
+      </form>
+    </div>
+  </main>
+  <footer>
+    版本 0.0.1
+  </footer>
+</body>
+</html>
