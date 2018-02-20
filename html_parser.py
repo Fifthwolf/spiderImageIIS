@@ -27,7 +27,7 @@ class HtmlParser(object):
         res_data['title'] = title_node.get_text()
 
         #图片集
-        images = soup.find('div', {"class": "article-content"}).find_all('img', src=re.compile(r"imgs.aixifan.com/"))
+        images = soup.find('div', {"class": "article-content"}).find_all('img')
         for image in images:
             res_data['images'].append(image['src'])
 
