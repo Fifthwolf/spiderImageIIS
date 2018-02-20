@@ -17,8 +17,9 @@ class SpiderMain(object):
                 print 'craw %s' % url
                 html_cont = self.downloader.download(url)
                 data = self.parser.parse(url, html_cont)
+                return data
             #self.outputer.collect_data(new_data)
         except :
             print 'craw failed'
 
-        self.outputer.output_html()
+        #self.outputer.output_html()

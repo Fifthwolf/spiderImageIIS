@@ -1,14 +1,19 @@
 # -*- coding: UTF-8 -*-
 import cgi
+import requests
 import spider_main
+from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer  
+import io, shutil    
+import urllib  
+import os, sys
 
 print("Content-Type: text/html\n")
-print("<!DOCTYPE html>")
-print("<html lang=\"en\">")
-print("<head>")
-print("<meta charset=\"UTF-8\">")
-print("<title>图片获取工具</title>")
-print("</head>")
+#print("<!DOCTYPE html>")
+#print("<html lang=\"en\">")
+#print("<head>")
+#print("<meta charset=\"UTF-8\">")
+#print("<title>图片获取工具</title>")
+#print("</head>")
 
 class GetValue(object):
 
@@ -26,7 +31,7 @@ class GetValue(object):
         finally:
             return list
 
-form = GetValue(cgi.FieldStorage())
+form =  GetValue(cgi.FieldStorage())
 
 info = {
     #页面地址
@@ -39,5 +44,9 @@ info = {
     'imageFormat': form.get('imageFormat')
 }
 
-obj_spider = spider_main.SpiderMain(info)
-obj_spider.craw()
+print info['urls']
+print info['imageAddress']
+print info['common']
+
+#obj_spider = spider_main.SpiderMain(info)
+#print obj_spider.craw()
