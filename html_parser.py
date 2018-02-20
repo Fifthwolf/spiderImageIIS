@@ -8,9 +8,6 @@ from bs4 import BeautifulSoup
 class HtmlParser(object):
 
     def parse(self, page_url, html_cont):
-        if page_url is None or html_cont is None:
-            return
-
         soup = BeautifulSoup(html_cont, 'html.parser', from_encoding='utf-8')
         data = self._get_data(page_url, soup)
         return data
@@ -29,7 +26,6 @@ class HtmlParser(object):
         except :
             res_data['title'] = '无效地址'
         
-
         #图片集
         try:
             images = soup.find('div', {"class": "article-content"}).find_all('img')

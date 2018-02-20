@@ -22,27 +22,17 @@ submit.addEventListener('click', function() {
 });
 
 function result(e) {
-  // try {
-  //   var result = JSON.parse(e);
-  //   for (var i of result) {
-  //     _createDom(i, resultDiv);
-  //   }
-  // } catch (err) {
-  //   console.log('nojsoon');
-  // }
-  var result = JSON.parse(e);
-  for (var i of result) {
-    console.log(i);
-    try {
+  try {
+    var result = JSON.parse(e);
+    for (var i of result) {
       _createDom(i, resultDiv);
-    } catch (err) {
-      console.log('nodiv');
     }
+  } catch (err) {
+    console.log('nojsoon');
   }
 
   function _createDom(info, parent) {
     var item = _createElementHaveClass('div', 'item', '', parent)
-
     _createHead(info, item);
     _createImgwrapper(info, item);
 

@@ -14,7 +14,10 @@ class SpiderMain(object):
     def craw(self):
         try:
             for url in self.urls:
-                html_cont = self.downloader.download(url)
+                try:
+                    html_cont = self.downloader.download(url)
+                except:
+                    html_cont = ''
                 data = self.parser.parse(url, html_cont)
                 self.datas.append(data)
         except:
