@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 # -*- coding: UTF-8 -*-
 
-import html_downloader, html_parser
+import html_downloader, html_parser, json
 
 class SpiderMain(object):
 
@@ -20,4 +20,4 @@ class SpiderMain(object):
         except:
             print 'craw failed'
         finally:
-            return self.datas
+            return json.dumps(self.datas)

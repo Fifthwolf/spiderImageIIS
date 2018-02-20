@@ -23,12 +23,19 @@ class HtmlParser(object):
         res_data['url'] = page_url
 
         #标题
-        title_node = soup.find('div', {"class": "art-title-head"}).find('div', {"class": "caption"})
-        res_data['title'] = title_node.get_text()
+        try:
+            title_node = soup.find('div', {"class": "art-title-head"}).find('div', {"class": "caption"})
+            res_data['title'] = title_node.get_text()
+        except :
+            res_data['title'] = '无效地址'
+        
 
         #图片集
-        images = soup.find('div', {"class": "article-content"}).find_all('img')
-        for image in images:
-            res_data['images'].append(image['src'])
-
+        try:
+            images = soup.find('div', {"class": "article-content"}).find_all('img')
+            for image in images:
+                res_data['images'].append(image['src'])
+        except:
+            res_data['images'] = ['empty']
+        
         return res_data
