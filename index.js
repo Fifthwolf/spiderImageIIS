@@ -34,7 +34,9 @@ function result(e) {
   function _createDom(info, parent) {
     var item = _createElementHaveClass('div', 'item', '', parent)
     _createHead(info, item);
-    _createImgwrapper(info, item);
+    if (info.title != '无效地址') {
+      _createImgwrapper(info, item);
+    }
 
     function _createHead(info, parent) {
       var itemHead = _createElementHaveClass('div', 'item-head', '', parent);
