@@ -40,19 +40,27 @@ main {
       width: 420px;
       text-align: left;
       background-color: rgba(17, 34, 51, 0.5); }
+      main .wrapper form #addAddress {
+        display: inline-block;
+        margin: 5px 0 10px;
+        width: 60px;
+        height: 20px; }
       main .wrapper form label {
         margin-right: 10px; }
       main .wrapper form input, main .wrapper form select {
-        margin-bottom: 20px; }
+        margin-top: 5px;
+        margin-bottom: 10px; }
       main .wrapper form input[type=text] {
-        width: 250px; }
+        width: 290px; }
+      main .wrapper form input[name=pageAddress] {
+        width: 420px; }
       main .wrapper form input[type=checkbox] {
         margin-right: 5px; }
         main .wrapper form input[type=checkbox] + span {
           margin-right: 20px; }
       main .wrapper form input[type=button] {
         display: block;
-        margin: 20px auto;
+        margin: 20px auto 0;
         width: 80px;
         height: 30px; }
     main .wrapper #result .handle {

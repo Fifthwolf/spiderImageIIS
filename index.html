@@ -13,18 +13,18 @@
     <div class="wrapper">
       <form id="form" action="connect.py" method="post">
         <label for="">页面地址：</label>
+        <input type="button" id="addAddress" value="增加" />
         <br />
-        <input type="text" name="pageAddress" value="http://www.acfun.cn/a/ac42332852"/>
         <input type="text" name="pageAddress" value="http://www.acfun.cn/a/ac4233285"/>
-        <br />
+        <br id="addAddressEnd" />
         <label for="">图片地址格式：</label>
-        <input type="text" name="imageAddress" value="Reserve"/>
+        <input type="text" name="imageAddress" value="暂不使用" disabled />
         <br />
         <label for="">常用页面：</label>
         <select name="common">
-          <option value="none">不使用</option>
-          <option value="AcFun">AcFun</option>
-          <option value="Bilibili">Bilibili</option>
+          <option value="0">页面全部图片</option>
+          <option value="1">AcFun文章区</option>
+          <option value="2">Bilibili专栏(未生效)</option>
         </select>
         <br />
         <label for="">指定图片格式：</label>

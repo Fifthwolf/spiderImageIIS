@@ -1,6 +1,8 @@
 var form = document.getElementById('form'),
-  submit = document.getElementById('submit');
-resultDiv = document.getElementById('result');
+  submit = document.getElementById('submit'),
+  addAddress = document.getElementById('addAddress'),
+  addAddressEnd = document.getElementById('addAddressEnd'),
+  resultDiv = document.getElementById('result');
 
 var ajax = {
   post: function(url, data, fn) {
@@ -15,6 +17,13 @@ var ajax = {
     xhr.send(data);
   }
 }
+
+addAddress.addEventListener('click', function() {
+  var input = document.createElement('input');
+  input.setAttribute('type', 'text');
+  input.setAttribute('name', 'pageAddress'); 
+  form.insertBefore(input, addAddressEnd);
+});
 
 submit.addEventListener('click', function() {
   var data = serializeForm(form);
