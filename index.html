@@ -15,7 +15,7 @@
         <label for="">页面地址：</label>
         <input type="button" id="addAddress" value="增加" />
         <br />
-        <input type="text" name="pageAddress" value="http://www.acfun.cn/a/ac4233285"/>
+        <input type="text" name="pageAddress" value="https://www.bilibili.com/read/cv224395"/>
         <br id="addAddressEnd" />
         <label for="">图片地址格式：</label>
         <input type="text" name="imageAddress" value="暂不使用" disabled />
@@ -24,7 +24,7 @@
         <select name="common">
           <option value="0">页面全部图片</option>
           <option value="1">AcFun文章区</option>
-          <option value="2">Bilibili专栏(未生效)</option>
+          <option value="2" selected>Bilibili专栏(未生效)</option>
         </select>
         <br />
         <label for="">指定图片格式：</label>
@@ -35,7 +35,9 @@
         <input type="button" id="submit" value="提交" />
       </form>
       <div id="result">
-        <div class="handle"></div>
+        <div class="handle">
+          <button id="images-down">一键下载图片</button>
+        </div>
         <!--
         <div class="item">
           <div class="item-head">

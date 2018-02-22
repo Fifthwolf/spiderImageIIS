@@ -66,8 +66,12 @@ main {
     main .wrapper #result .handle {
       margin: 10px auto;
       width: 460px;
-      height: 100px;
+      height: 70px;
       background-color: #aaa; }
+      main .wrapper #result .handle #images-down {
+        margin-top: 15px;
+        width: 100px;
+        height: 40px; }
     main .wrapper #result .item {
       margin-top: 10px;
       background-color: rgba(17, 34, 51, 0.5); }

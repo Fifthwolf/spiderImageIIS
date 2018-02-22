@@ -2,7 +2,10 @@ var form = document.getElementById('form'),
   submit = document.getElementById('submit'),
   addAddress = document.getElementById('addAddress'),
   addAddressEnd = document.getElementById('addAddressEnd'),
-  resultDiv = document.getElementById('result');
+  resultDiv = document.getElementById('result'),
+  imagesDown = document.getElementById('images-down');
+
+var data = {};
 
 var ajax = {
   post: function(url, data, fn) {
@@ -21,7 +24,7 @@ var ajax = {
 addAddress.addEventListener('click', function() {
   var input = document.createElement('input');
   input.setAttribute('type', 'text');
-  input.setAttribute('name', 'pageAddress'); 
+  input.setAttribute('name', 'pageAddress');
   form.insertBefore(input, addAddressEnd);
 });
 
@@ -30,9 +33,15 @@ submit.addEventListener('click', function() {
   ajax.post('connect.py', data, result);
 });
 
+imagesDown.addEventListener('click', function() {
+  var imagesdata = serializeImages(data.images);
+  ajax.post('images_down.py', imagesdata, imagesResult);
+});
+
 function result(e) {
   try {
     var result = JSON.parse(e);
+    data.images = result[0].images;
     for (var i of result) {
       _createDom(i, resultDiv);
     }
@@ -72,12 +81,28 @@ function result(e) {
   }
 }
 
+function imagesResult(e) {
+  console.log(e);
+}
+
 function serializeForm(form) {
   var setForm = '';
   for (var key in form) {
     if (form.hasOwnProperty(key) && form[key].name != '') {
+      if (form[key].name == 'common') {
+        data.common = form[key].value;
+      }
       setForm += encodeURIComponent(form[key].name) + '=' + encodeURIComponent(form[key].value) + '&';
     }
   }
   return setForm.slice(0, setForm.length - 1);
+}
+
+function serializeImages(images) {
+  var imagesdata = '';
+  for (var i = 0; i < images.length; i++) {
+    imagesdata += 'images=' + encodeURIComponent(images[i]) + '&';
+  }
+  imagesdata += 'common=' + data.common;
+  return imagesdata;
 }
