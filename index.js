@@ -45,6 +45,7 @@ function result(e) {
     for (var i of result) {
       _createDom(i, resultDiv);
     }
+    imagesDown.disabled = false;
   } catch (err) {
     console.log('nojsoon');
   }
