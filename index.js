@@ -84,7 +84,9 @@ function result(e) {
 }
 
 function imagesResult(e) {
-  console.log(e);
+  if (e == 1) {
+    alert('下载成功！');
+  }
 }
 
 function serializeForm(form) {
