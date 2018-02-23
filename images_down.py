@@ -30,11 +30,9 @@ for img in images:
     file = re.findall(r"\/([^/]+)(\.\w+$)", img)
 
     #B站img加http
-    if common == 2:
+    if common == '2':
         img = 'http:'+ img
 
-    print path + str(file[0][0]) + str(file[0][1])
     urllib.urlretrieve(img, path + str(file[0][0]) + str(file[0][1]))
 
 print 1
-
