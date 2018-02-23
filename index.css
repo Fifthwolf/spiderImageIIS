@@ -36,7 +36,7 @@ main {
     background-color: #789; }
     main .wrapper form {
       margin: 0 auto;
-      padding: 20px;
+      padding: 20px 20px 15px;
       width: 420px;
       text-align: left;
       background-color: rgba(17, 34, 51, 0.5); }
@@ -50,6 +50,8 @@ main {
       main .wrapper form input, main .wrapper form select {
         margin-top: 5px;
         margin-bottom: 10px; }
+      main .wrapper form .button {
+        text-align: center; }
       main .wrapper form input[type=text] {
         width: 290px; }
       main .wrapper form input[name=pageAddress] {
@@ -59,8 +61,8 @@ main {
         main .wrapper form input[type=checkbox] + span {
           margin-right: 20px; }
       main .wrapper form input[type=button] {
-        display: block;
-        margin: 10px auto 0;
+        display: inline-block;
+        margin: 10px 5px 0;
         width: 80px;
         height: 30px; }
     main .wrapper #result .handle {

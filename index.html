@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="referrer" content="no-referrer" />
   <title>图片获取工具</title>
   <link rel="stylesheet" href="index.css">
 </head>
@@ -15,7 +16,7 @@
         <label for="">页面地址：</label>
         <input type="button" id="addAddress" value="增加" />
         <br />
-        <input type="text" name="pageAddress" value="https://www.bilibili.com/read/cv242428"/>
+        <input type="text" name="pageAddress" value="http://"/>
         <br id="addAddressEnd" />
         <label for="">图片地址格式：</label>
         <input type="text" name="imageAddress" value="暂不使用" disabled />
@@ -24,7 +25,7 @@
         <select name="common">
           <option value="0">页面全部图片</option>
           <option value="1">AcFun文章区</option>
-          <option value="2" selected>Bilibili专栏(未生效)</option>
+          <option value="2">Bilibili专栏</option>
         </select>
         <br />
         <label for="">指定图片格式：</label>
@@ -32,7 +33,10 @@
         <input type="checkbox" name="imageFormat" value="png" checked="checked" disabled /><span>.PNG</span>
         <input type="checkbox" name="imageFormat" value="gif" checked="checked" disabled /><span>.GIF</span>
         <br />
-        <input type="button" id="submit" value="提交" />
+        <div class="button">
+          <input type="button" id="submit" value="提交" />
+          <input type="button" id="reset" value="重置" disabled />
+        </div>
       </form>
       <div id="result">
         <div class="handle">

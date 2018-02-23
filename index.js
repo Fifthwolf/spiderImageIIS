@@ -26,24 +26,30 @@ addAddress.addEventListener('click', function() {
   var input = document.createElement('input');
   input.setAttribute('type', 'text');
   input.setAttribute('name', 'pageAddress');
+  input.setAttribute('value', 'http://');
   form.insertBefore(input, addAddressEnd);
 });
 
 submit.addEventListener('click', function() {
+  submit.disabled = true;
   var data = serializeForm(form);
   ajax.post('connect.py', data, result);
 });
 
 imagesDown.addEventListener('click', function() {
+  imagesDown.disabled = true;
   var imagesdata = serializeImages(data.images);
   ajax.post('images_down.py', imagesdata, imagesResult);
 });
 
 function result(e) {
+  data.images = [];
   try {
     var result = JSON.parse(e);
-    data.images = result[0].images;
     for (var i of result) {
+      for (var index in i.images) {
+        data.images.push(i.images[index]);
+      }
       _createDom(i, resultDiv);
     }
     imagesDown.disabled = false;
@@ -107,7 +113,6 @@ function serializeImages(images) {
   for (var i = 0; i < images.length; i++) {
     imagesdata += 'images=' + encodeURIComponent(images[i]) + '&';
   }
-  imagesdata += 'common=' + data.common + '&';
   imagesdata += 'path=' + encodeURIComponent(imagesDownAddress.value);
   return imagesdata;
 }

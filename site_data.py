@@ -41,7 +41,7 @@ class SiteData(object):
     def append_images2(self, images):
         images_data = []
         for image in images:
-            images_data.append(image['data-src'])
+            images_data.append('http:' + image['data-src'])
         return images_data
 
 class GetData(object):

@@ -18,7 +18,6 @@ def mkdir(path):
 info = public.GetValue(cgi.FieldStorage())
 
 images = info.get('images')
-common = info.get('common')[0]
 path = info.get('path')[0]
 
 if path[len(path) - 1] != '/':
@@ -27,12 +26,7 @@ if path[len(path) - 1] != '/':
 mkdir(path)
 
 for img in images:
-    file = re.findall(r"\/([^/]+)(\.\w+$)", img)
-
-    #B站img加http
-    if common == '2':
-        img = 'http:'+ img
-
-    urllib.urlretrieve(img, path + str(file[0][0]) + str(file[0][1]))
+    file = re.findall(r"\/([^/]+\.\w+$)", img)
+    urllib.urlretrieve(img, path + str(file[0]))
 
 print 1
