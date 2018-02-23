@@ -3,6 +3,7 @@ var form = document.getElementById('form'),
   addAddress = document.getElementById('addAddress'),
   addAddressEnd = document.getElementById('addAddressEnd'),
   resultDiv = document.getElementById('result'),
+  imagesDownAddress = document.getElementById('images-down-address'),
   imagesDown = document.getElementById('images-down');
 
 var data = {};
@@ -104,6 +105,7 @@ function serializeImages(images) {
   for (var i = 0; i < images.length; i++) {
     imagesdata += 'images=' + encodeURIComponent(images[i]) + '&';
   }
-  imagesdata += 'common=' + data.common;
+  imagesdata += 'common=' + data.common + '&';
+  imagesdata += 'path=' + encodeURIComponent(imagesDownAddress.value);
   return imagesdata;
 }
