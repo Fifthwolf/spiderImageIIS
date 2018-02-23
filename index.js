@@ -1,5 +1,6 @@
 var form = document.getElementById('form'),
   submit = document.getElementById('submit'),
+  reset = document.getElementById('reset'),
   addAddress = document.getElementById('addAddress'),
   addAddressEnd = document.getElementById('addAddressEnd'),
   resultDiv = document.getElementById('result'),
@@ -23,21 +24,45 @@ var ajax = {
 }
 
 addAddress.addEventListener('click', function() {
+  reset.disabled = false;
   var input = document.createElement('input');
   input.setAttribute('type', 'text');
   input.setAttribute('name', 'pageAddress');
+  input.setAttribute('class', 'pageAddress');
   input.setAttribute('value', 'http://');
   form.insertBefore(input, addAddressEnd);
 });
 
 submit.addEventListener('click', function() {
   submit.disabled = true;
+  reset.disabled = false;
   var data = serializeForm(form);
   ajax.post('connect.py', data, result);
 });
 
-imagesDown.addEventListener('click', function() {
+reset.addEventListener('click', function() {
+  data = {};
+  reset.disabled = true;
+  submit.disabled = false;
   imagesDown.disabled = true;
+
+  //页面地址栏清空
+  pageAddressInput = form.getElementsByClassName('pageAddress');
+  for (var i = pageAddressInput.length - 1; i >= 1; i--) {
+    form.removeChild(pageAddressInput[i]);
+  }
+
+  //结果清空
+  resultItem = resultDiv.getElementsByClassName('item');
+  for (var i = resultItem.length - 1; i >= 0; i--) {
+    resultDiv.removeChild(resultItem[i]);
+  }
+});
+
+imagesDown.addEventListener('click', function() {
+  imagesDown.innerHTML = '下载中';
+  imagesDown.disabled = true;
+  reset.disabled = true;
   var imagesdata = serializeImages(data.images);
   ajax.post('images_down.py', imagesdata, imagesResult);
 });
@@ -92,6 +117,9 @@ function result(e) {
 function imagesResult(e) {
   if (e == 1) {
     alert('下载成功！');
+    imagesDown.innerHTML = '下载成功';
+    imagesDown.disabled = false;
+    reset.disabled = false;
   }
 }
 
