@@ -40,7 +40,17 @@ submit.addEventListener('click', function() {
   ajax.post('connect.py', data, result);
 });
 
-reset.addEventListener('click', function() {
+reset.addEventListener('click', resetFunc);
+
+imagesDown.addEventListener('click', function() {
+  imagesDown.innerHTML = '下载中';
+  imagesDown.disabled = true;
+  reset.disabled = true;
+  var imagesdata = serializeImages(data.images);
+  ajax.post('images_down.py', imagesdata, imagesResult);
+});
+
+function resetFunc() {
   data = {};
   reset.disabled = true;
   submit.disabled = false;
@@ -57,15 +67,7 @@ reset.addEventListener('click', function() {
   for (var i = resultItem.length - 1; i >= 0; i--) {
     resultDiv.removeChild(resultItem[i]);
   }
-});
-
-imagesDown.addEventListener('click', function() {
-  imagesDown.innerHTML = '下载中';
-  imagesDown.disabled = true;
-  reset.disabled = true;
-  var imagesdata = serializeImages(data.images);
-  ajax.post('images_down.py', imagesdata, imagesResult);
-});
+}
 
 function result(e) {
   data.images = [];
