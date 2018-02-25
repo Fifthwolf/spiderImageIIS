@@ -2,6 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 from bs4 import BeautifulSoup
+import re
 
 class SiteData(object):
 
@@ -42,6 +43,20 @@ class SiteData(object):
         images_data = []
         for image in images:
             images_data.append('http:' + image['data-src'])
+        return images_data
+
+    #知乎问题回答
+    def title3(self, soup):
+        return soup.find('div', {"class": "QuestionHeader"}).find('h1', {"class": "QuestionHeader-title"}).get_text()
+
+    def get_images3(self, soup):
+        return soup.find('div', {"class": "QuestionAnswer-content"}).find_all('img')
+
+    def append_images3(self, images):
+        images_data = []
+        for image in images:
+            if not(re.match(r'^data', image['src'])):
+                images_data.append(image['src'])
         return images_data
 
 class GetData(object):
