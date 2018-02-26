@@ -20,13 +20,13 @@ class HtmlParser(object):
 
         #标题
         try:
-            res_data['title'] = self.get_data.get_title_node(soup)
+            res_data['title'] = self.get_data.get_title_node(soup, page_url)
         except :
             res_data['title'] = '无效地址'
         
         #图片集
         try:
-            res_data['images'] = self.get_data.get_images(soup)
+            res_data['images'] = self.get_data.get_images(soup, page_url)
         except:
             res_data['images'] = ['empty']
         
