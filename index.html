@@ -22,13 +22,14 @@
         <input type="text" name="imageAddress" value="暂不使用" disabled />
         <br />
         <label for="">页面类型：</label>
-        <select name="common">
-          <option value="0">页面全部图片</option>
+        <select name="common" id="common">
+          <option value="0">缺省（成功率较低）</option>
           <option value="1">AcFun文章区</option>
           <option value="2">Bilibili专栏</option>
           <option value="3">Bilibili相簿</option>
           <option value="4">知乎问题回答</option>
         </select>
+        <input type="button" id="distinguish" value="自动识别" />
         <br />
         <label for="">指定图片格式：</label>
         <input type="checkbox" name="imageFormat" value="jpg" checked="checked" disabled /><span>.JPG</span>

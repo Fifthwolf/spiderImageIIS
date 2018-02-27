@@ -3,6 +3,8 @@ var form = document.getElementById('form'),
   reset = document.getElementById('reset'),
   addAddress = document.getElementById('addAddress'),
   addAddressEnd = document.getElementById('addAddressEnd'),
+  common = document.getElementById('common'),
+  distinguish = document.getElementById('distinguish'),
   resultDiv = document.getElementById('result'),
   imagesDownAddress = document.getElementById('images-down-address'),
   imagesDown = document.getElementById('images-down');
@@ -38,6 +40,29 @@ submit.addEventListener('click', function() {
   reset.disabled = false;
   var data = serializeForm(form);
   ajax.post('connect.py', data, result);
+});
+
+distinguish.addEventListener('click', function() {
+  var website;
+  try {
+    website = form.pageAddress[0].value;
+  } catch (e) {
+    website = form.pageAddress.value;
+  }
+
+  const data = [
+    /acfun\.cn\/a\/ac\d+/,
+    /bilibili\.com\/read\/cv\d+/,
+    /h\.bilibili\.com\/\d+/,
+    /zhihu\.com\/question\/\d+\/answer\/\d+/
+  ];
+
+  for (var i = 0, len = data.length; i < len; i++) {
+    if (data[i].test(website)) {
+      common.value = i + 1;
+      break;
+    }
+  }
 });
 
 reset.addEventListener('click', resetFunc);
