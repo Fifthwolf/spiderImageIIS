@@ -4,7 +4,8 @@
 
 html, body {
   height: 100%;
-  overflow: hidden; }
+  overflow: hidden;
+  background-color: #ddd; }
 
 header {
   position: absolute;
@@ -43,6 +44,10 @@ main {
       main .wrapper form #addAddress {
         display: inline-block;
         margin: 5px 0 10px;
+        width: 60px;
+        height: 20px; }
+      main .wrapper form #distinguish {
+        margin-left: 10px;
         width: 60px;
         height: 20px; }
       main .wrapper form label {

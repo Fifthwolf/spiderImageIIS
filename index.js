@@ -51,15 +51,15 @@ distinguish.addEventListener('click', function() {
   }
 
   const data = [
-    /acfun\.cn\/a\/ac\d+/,
-    /bilibili\.com\/read\/cv\d+/,
-    /h\.bilibili\.com\/\d+/,
-    /zhihu\.com\/question\/\d+\/answer\/\d+/
+    [/acfun\.cn\/a\/ac\d+/, 1],
+    [/bilibili\.com\/read\/cv\d+/, 2],
+    [/h\.bilibili\.com\/\d+/, 3],
+    [/zhihu\.com\/question\/\d+\/answer\/\d+/, 4]
   ];
 
   for (var i = 0, len = data.length; i < len; i++) {
-    if (data[i].test(website)) {
-      common.value = i + 1;
+    if (data[i][0].test(website)) {
+      common.value = data[i][1];
       break;
     }
   }
@@ -100,7 +100,7 @@ function result(e) {
     var result = JSON.parse(e);
     for (var i of result) {
       for (var index in i.images) {
-        data.images.push(i.images[index]);
+        data.images.push([i.images[index], i.title]);
       }
       _createDom(i, resultDiv);
     }
