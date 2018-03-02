@@ -28,6 +28,22 @@ class JsonData(object):
         jd = json.loads(comments.text.strip('var data=')) #移除改var data=将其变为json数据
         return jd['data']['items']
 
+    #Bilibili相簿主页最热
+    def get_images3_2(self, id):
+        url = 'https://api.vc.bilibili.com/link_draw/v2/Doc/index?type=hot&page_num=0&page_size=10'
+        comments = requests.get(url)
+        comments.encoding = 'utf-8'
+        jd = json.loads(comments.text.strip('var data=')) #移除改var data=将其变为json数据
+        return jd['data']['items']
+
+    #Bilibili相簿主页最新
+    def get_images3_3(self, id):
+        url = 'https://api.vc.bilibili.com/link_draw/v2/Doc/index?type=new&page_num=0&page_size=10'
+        comments = requests.get(url)
+        comments.encoding = 'utf-8'
+        jd = json.loads(comments.text.strip('var data=')) #移除改var data=将其变为json数据
+        return jd['data']['items']
+
 class GetData(object):
 
     def __init__(self, url, common):
