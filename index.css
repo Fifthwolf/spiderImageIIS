@@ -37,7 +37,7 @@ main {
     background-color: #789; }
     main .wrapper form {
       margin: 0 auto;
-      padding: 20px 20px 15px;
+      padding: 20px;
       width: 420px;
       text-align: left;
       background-color: rgba(17, 34, 51, 0.5); }
@@ -68,6 +68,20 @@ main {
       main .wrapper form input[type=button] {
         display: inline-block;
         margin: 10px 5px 0;
+        width: 80px;
+        height: 30px; }
+      main .wrapper form:first-child {
+        padding-bottom: 0; }
+      main .wrapper form:last-child {
+        padding-top: 0; }
+    main .wrapper #quickSubmit {
+      padding: 20px 20px 10px;
+      color: #fff;
+      background-color: rgba(17, 34, 51, 0.6); }
+      main .wrapper #quickSubmit p {
+        margin-top: -10px; }
+      main .wrapper #quickSubmit input[type=button] {
+        margin: 10px 5px 5px;
         width: 80px;
         height: 30px; }
     main .wrapper #result .handle {

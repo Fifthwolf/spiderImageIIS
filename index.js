@@ -6,6 +6,7 @@ var form = document.getElementById('form'),
   common = document.getElementById('common'),
   distinguish = document.getElementById('distinguish'),
   resultDiv = document.getElementById('result'),
+  quickSubmit = document.getElementById('quickSubmit'),
   imagesDownAddress = document.getElementById('images-down-address'),
   imagesDown = document.getElementById('images-down');
 
@@ -67,6 +68,67 @@ distinguish.addEventListener('click', function() {
 
 reset.addEventListener('click', resetFunc);
 
+quickSubmit.addEventListener('click', function(e) {
+  const data = [{
+    'pageAddress': 'https://h.bilibili.com/d',
+    'common': '3_1'
+  }, {
+    'pageAddress': 'https://h.bilibili.com/d',
+    'common': '3_2'
+  }, {
+    'pageAddress': 'https://h.bilibili.com/d',
+    'common': '3_3'
+  }, {
+    'pageAddress': 'https://h.bilibili.com/eden/draw_area#/illustration/hot',
+    'common': '3_4'
+  }, {
+    'pageAddress': 'https://h.bilibili.com/eden/draw_area#/illustration/new',
+    'common': '3_5'
+  }, {
+    'pageAddress': 'https://h.bilibili.com/eden/draw_area#/comic/hot',
+    'common': '3_6'
+  }, {
+    'pageAddress': 'https://h.bilibili.com/eden/draw_area#/comic/new',
+    'common': '3_7'
+  }, {
+    'pageAddress': 'https://h.bilibili.com/eden/draw_area#/other/hot',
+    'common': '3_8'
+  }, {
+    'pageAddress': 'https://h.bilibili.com/eden/draw_area#/other/new',
+    'common': '3_9'
+  }]
+
+  if (e.target.type == 'button') {
+    var index = e.target.getAttribute('data-id') - 1;
+    ajax.post('connect.py', quickSerializeObject(data[index]), quickSubmitResult);
+  }
+});
+
+function quickSubmitResult(e) {
+  var itmes = [];
+  try {
+    var jsondata = JSON.parse(e);
+    for (var i of jsondata) {
+      for (var index in i.images) {
+        itmes.push([i.images[index], i.title]);
+      }
+    }
+  } catch (err) {
+    console.log('nojson');
+  }
+
+  ajax.post('connect.py', _serialize(itmes), result);
+
+  function _serialize(itmes) {
+    var setForm = '';
+    for (var i of itmes) {
+      setForm += 'pageAddress=' + encodeURIComponent('https://h.bilibili.com/') + i[0] + '&';
+    }
+    setForm += 'common=3&imageAddress=暂不使用&imageFormat=jpg&imageFormat=png&imageFormat=gif'
+    return setForm;
+  }
+}
+
 imagesDown.addEventListener('click', function() {
   imagesDown.innerHTML = '下载中';
   imagesDown.disabled = true;
@@ -106,7 +168,7 @@ function result(e) {
     }
     imagesDown.disabled = false;
   } catch (err) {
-    console.log('nojsoon');
+    console.log('nojson');
   }
 
   function _createDom(info, parent) {
@@ -148,6 +210,15 @@ function imagesResult(e) {
     imagesDown.disabled = false;
     reset.disabled = false;
   }
+}
+
+function quickSerializeObject(obj) {
+  var setForm = '';
+  for (var i in obj) {
+    setForm += encodeURIComponent(i) + '=' + encodeURIComponent(obj[i]) + '&';
+  }
+  setForm += 'imageAddress=暂不使用&imageFormat=jpg&imageFormat=png&imageFormat=gif'
+  return setForm;
 }
 
 function serializeForm(form) {

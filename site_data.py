@@ -59,6 +59,19 @@ class SiteData(object):
             images_data.append(image['img_src'])
         return images_data
 
+    #Bilibili相簿主页推荐
+    def title3_1(self, soup, url):
+        return soup.find('title').get_text()
+
+    def get_images3_1(self, soup, url):
+        return site_json.GetData(url, '3_1').get_images()
+
+    def append_images3_1(self, items):
+        ids_data = []
+        for item in items:
+            ids_data.append(item['item']['doc_id'])
+        return ids_data
+
     #知乎问题回答
     def title4(self, soup, url):
         return soup.find('div', {"class": "QuestionHeader"}).find('h1', {"class": "QuestionHeader-title"}).get_text()
