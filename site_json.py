@@ -44,6 +44,54 @@ class JsonData(object):
         jd = json.loads(comments.text.strip('var data=')) #移除改var data=将其变为json数据
         return jd['data']['items']
 
+    #Bilibili相簿插画最热
+    def get_images3_4(self, id):
+        url = 'https://api.vc.bilibili.com/link_draw/v2/Doc/list?category=illustration&type=hot&page_num=0&page_size=20'
+        comments = requests.get(url)
+        comments.encoding = 'utf-8'
+        jd = json.loads(comments.text.strip('var data=')) #移除改var data=将其变为json数据
+        return jd['data']['items']
+
+    #Bilibili相簿插画最新
+    def get_images3_5(self, id):
+        url = 'https://api.vc.bilibili.com/link_draw/v2/Doc/list?category=illustration&type=new&page_num=0&page_size=20'
+        comments = requests.get(url)
+        comments.encoding = 'utf-8'
+        jd = json.loads(comments.text.strip('var data=')) #移除改var data=将其变为json数据
+        return jd['data']['items']
+
+    #Bilibili相簿插画最热
+    def get_images3_6(self, id):
+        url = 'https://api.vc.bilibili.com/link_draw/v2/Doc/list?category=comic&type=hot&page_num=0&page_size=20'
+        comments = requests.get(url)
+        comments.encoding = 'utf-8'
+        jd = json.loads(comments.text.strip('var data=')) #移除改var data=将其变为json数据
+        return jd['data']['items']
+
+    #Bilibili相簿插画最新
+    def get_images3_7(self, id):
+        url = 'https://api.vc.bilibili.com/link_draw/v2/Doc/list?category=comic&type=new&page_num=0&page_size=20'
+        comments = requests.get(url)
+        comments.encoding = 'utf-8'
+        jd = json.loads(comments.text.strip('var data=')) #移除改var data=将其变为json数据
+        return jd['data']['items']
+
+    #Bilibili相簿其他最热
+    def get_images3_8(self, id):
+        url = 'https://api.vc.bilibili.com/link_draw/v2/Doc/list?category=draw&type=hot&page_num=0&page_size=20'
+        comments = requests.get(url)
+        comments.encoding = 'utf-8'
+        jd = json.loads(comments.text.strip('var data=')) #移除改var data=将其变为json数据
+        return jd['data']['items']
+
+    #Bilibili相簿插画最新
+    def get_images3_9(self, id):
+        url = 'https://api.vc.bilibili.com/link_draw/v2/Doc/list?category=draw&type=new&page_num=0&page_size=20'
+        comments = requests.get(url)
+        comments.encoding = 'utf-8'
+        jd = json.loads(comments.text.strip('var data=')) #移除改var data=将其变为json数据
+        return jd['data']['items']
+
 class GetData(object):
 
     def __init__(self, url, common):

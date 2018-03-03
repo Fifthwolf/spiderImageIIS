@@ -98,6 +98,84 @@ class SiteData(object):
             ids_data.append(item['item']['doc_id'])
         return ids_data
 
+    #Bilibili相簿插画最热
+    def title3_4(self, soup, url):
+        return soup.find('title').get_text()
+
+    def get_images3_4(self, soup, url):
+        return site_json.GetData(url, '3_4').get_images()
+
+    def append_images3_4(self, items):
+        ids_data = []
+        for item in items:
+            ids_data.append(item['item']['doc_id'])
+        return ids_data
+
+    #Bilibili相簿插画最新
+    def title3_5(self, soup, url):
+        return soup.find('title').get_text()
+
+    def get_images3_5(self, soup, url):
+        return site_json.GetData(url, '3_5').get_images()
+
+    def append_images3_5(self, items):
+        ids_data = []
+        for item in items:
+            ids_data.append(item['item']['doc_id'])
+        return ids_data
+
+    #Bilibili相簿漫画最热
+    def title3_6(self, soup, url):
+        return soup.find('title').get_text()
+
+    def get_images3_6(self, soup, url):
+        return site_json.GetData(url, '3_6').get_images()
+
+    def append_images3_6(self, items):
+        ids_data = []
+        for item in items:
+            ids_data.append(item['item']['doc_id'])
+        return ids_data
+
+    #Bilibili相簿漫画最热
+    def title3_7(self, soup, url):
+        return soup.find('title').get_text()
+
+    def get_images3_7(self, soup, url):
+        return site_json.GetData(url, '3_7').get_images()
+
+    def append_images3_7(self, items):
+        ids_data = []
+        for item in items:
+            ids_data.append(item['item']['doc_id'])
+        return ids_data
+
+    #Bilibili相簿其他最热
+    def title3_8(self, soup, url):
+        return soup.find('title').get_text()
+
+    def get_images3_8(self, soup, url):
+        return site_json.GetData(url, '3_8').get_images()
+
+    def append_images3_8(self, items):
+        ids_data = []
+        for item in items:
+            ids_data.append(item['item']['doc_id'])
+        return ids_data
+
+    #Bilibili相簿其他最新
+    def title3_9(self, soup, url):
+        return soup.find('title').get_text()
+
+    def get_images3_9(self, soup, url):
+        return site_json.GetData(url, '3_9').get_images()
+
+    def append_images3_9(self, items):
+        ids_data = []
+        for item in items:
+            ids_data.append(item['item']['doc_id'])
+        return ids_data
+
     #知乎问题回答
     def title4(self, soup, url):
         return soup.find('div', {"class": "QuestionHeader"}).find('h1', {"class": "QuestionHeader-title"}).get_text()
