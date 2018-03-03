@@ -59,118 +59,14 @@ class SiteData(object):
             images_data.append(image['img_src'])
         return images_data
 
-    #Bilibili相簿主页推荐
-    def title3_1(self, soup, url):
+    #Bilibili相簿主页推荐、主页最热、最新;插画最热、最新;漫画最热、最新;其他最热、最新
+    def title3_(self, soup, url):
         return soup.find('title').get_text()
 
-    def get_images3_1(self, soup, url):
-        return site_json.GetData(url, '3_1').get_images()
+    def get_images3_(self, soup, url, commonIndex, pageNum):
+        return site_json.GetData(url, '3_').get_images_(commonIndex, pageNum)
 
-    def append_images3_1(self, items):
-        ids_data = []
-        for item in items:
-            ids_data.append(item['item']['doc_id'])
-        return ids_data
-
-    #Bilibili相簿主页最热
-    def title3_2(self, soup, url):
-        return soup.find('title').get_text()
-
-    def get_images3_2(self, soup, url):
-        return site_json.GetData(url, '3_2').get_images()
-
-    def append_images3_2(self, items):
-        ids_data = []
-        for item in items:
-            ids_data.append(item['item']['doc_id'])
-        return ids_data
-
-    #Bilibili相簿主页最新
-    def title3_3(self, soup, url):
-        return soup.find('title').get_text()
-
-    def get_images3_3(self, soup, url):
-        return site_json.GetData(url, '3_3').get_images()
-
-    def append_images3_3(self, items):
-        ids_data = []
-        for item in items:
-            ids_data.append(item['item']['doc_id'])
-        return ids_data
-
-    #Bilibili相簿插画最热
-    def title3_4(self, soup, url):
-        return soup.find('title').get_text()
-
-    def get_images3_4(self, soup, url):
-        return site_json.GetData(url, '3_4').get_images()
-
-    def append_images3_4(self, items):
-        ids_data = []
-        for item in items:
-            ids_data.append(item['item']['doc_id'])
-        return ids_data
-
-    #Bilibili相簿插画最新
-    def title3_5(self, soup, url):
-        return soup.find('title').get_text()
-
-    def get_images3_5(self, soup, url):
-        return site_json.GetData(url, '3_5').get_images()
-
-    def append_images3_5(self, items):
-        ids_data = []
-        for item in items:
-            ids_data.append(item['item']['doc_id'])
-        return ids_data
-
-    #Bilibili相簿漫画最热
-    def title3_6(self, soup, url):
-        return soup.find('title').get_text()
-
-    def get_images3_6(self, soup, url):
-        return site_json.GetData(url, '3_6').get_images()
-
-    def append_images3_6(self, items):
-        ids_data = []
-        for item in items:
-            ids_data.append(item['item']['doc_id'])
-        return ids_data
-
-    #Bilibili相簿漫画最热
-    def title3_7(self, soup, url):
-        return soup.find('title').get_text()
-
-    def get_images3_7(self, soup, url):
-        return site_json.GetData(url, '3_7').get_images()
-
-    def append_images3_7(self, items):
-        ids_data = []
-        for item in items:
-            ids_data.append(item['item']['doc_id'])
-        return ids_data
-
-    #Bilibili相簿其他最热
-    def title3_8(self, soup, url):
-        return soup.find('title').get_text()
-
-    def get_images3_8(self, soup, url):
-        return site_json.GetData(url, '3_8').get_images()
-
-    def append_images3_8(self, items):
-        ids_data = []
-        for item in items:
-            ids_data.append(item['item']['doc_id'])
-        return ids_data
-
-    #Bilibili相簿其他最新
-    def title3_9(self, soup, url):
-        return soup.find('title').get_text()
-
-    def get_images3_9(self, soup, url):
-        return site_json.GetData(url, '3_9').get_images()
-
-    def append_images3_9(self, items):
+    def append_images3_(self, items):
         ids_data = []
         for item in items:
             ids_data.append(item['item']['doc_id'])
@@ -192,14 +88,24 @@ class SiteData(object):
 
 class GetData(object):
 
-    def __init__(self, common):
+    def __init__(self, common, pageNum):
         self.siteData = SiteData()
         self.common = common
+        self.pageNum = pageNum
 
     def get_title_node(self, soup, url):
-        return getattr(self.siteData, 'title' + self.common)(soup, url)
+        if not(re.match(r'\d_\d', self.common)):
+            return getattr(self.siteData, 'title' + self.common)(soup, url)
+        else:
+            commonIndex = re.findall(r"(\d_)\d", self.common)[0]
+            return getattr(self.siteData, 'title' + commonIndex)(soup, url)
 
     def get_images(self, soup, url):
-        images = getattr(self.siteData, 'get_images' + self.common)(soup, url)
-        images_data = getattr(self.siteData, 'append_images' + self.common)(images)
+        if not(re.match(r'\d_\d', self.common)):
+            images = getattr(self.siteData, 'get_images' + self.common)(soup, url)
+            images_data = getattr(self.siteData, 'append_images' + self.common)(images)
+        else:
+            commonIndex = re.findall(r"(\d_)(\d)", self.common)[0]
+            images = getattr(self.siteData, 'get_images' + commonIndex[0])(soup, url, commonIndex[1], self.pageNum)
+            images_data = getattr(self.siteData, 'append_images' + commonIndex[0])(images)
         return images_data

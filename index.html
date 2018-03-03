@@ -18,9 +18,6 @@
         <br />
         <input type="text" name="pageAddress" class="pageAddress" value="http://"/>
         <br id="addAddressEnd" />
-        <label for="">图片地址格式：</label>
-        <input type="text" name="imageAddress" value="暂不使用" disabled />
-        <br />
         <label for="">页面类型：</label>
         <select name="common" id="common">
           <option value="0">缺省（成功率较低）</option>
@@ -30,11 +27,6 @@
           <option value="4">知乎问题回答</option>
         </select>
         <input type="button" id="distinguish" value="自动识别" />
-        <br />
-        <label for="">指定图片格式：</label>
-        <input type="checkbox" name="imageFormat" value="jpg" checked="checked" disabled /><span>.JPG</span>
-        <input type="checkbox" name="imageFormat" value="png" checked="checked" disabled /><span>.PNG</span>
-        <input type="checkbox" name="imageFormat" value="gif" checked="checked" disabled /><span>.GIF</span>
         <br />
         <div class="button">
           <input type="button" id="submit" value="提交" />
@@ -46,6 +38,9 @@
       <form action="connect.py">
         <div class="button" id="quickSubmit">
           <p>Bilibili&nbsp;相簿快速获取</p>
+          <label for="pageNum">页面序号</label>
+          <input type="text" id="pageNum" value="1" />
+          <br />
           <input type="button" data-id="1" value="主页推荐" />
           <input type="button" data-id="2" value="主页最热" />
           <input type="button" data-id="3" value="主页最新" />
@@ -66,11 +61,11 @@
         <!--
         <div class="item">
           <div class="item-head">
-            <p class="title">忍者神龟：新历险记第一期</p>
-            <p class="url">http://www.acfun.cn/a/ac4233285</p>
+            <p class="title">{{标题}}</p>
+            <p class="url">{{url地址}}</p>
           </div>
           <div class="img-wrapper">
-            <img src="http://imgs.aixifan.com/o_1c6m7610a1a3o1qob1cfcbj0olec.jpg" alt="">
+            <img src="{{图片地址}}" alt="">
           </div>
         </div>
         -->

@@ -1,14 +1,15 @@
-var form = document.getElementById('form'),
-  submit = document.getElementById('submit'),
-  reset = document.getElementById('reset'),
-  addAddress = document.getElementById('addAddress'),
-  addAddressEnd = document.getElementById('addAddressEnd'),
-  common = document.getElementById('common'),
-  distinguish = document.getElementById('distinguish'),
-  resultDiv = document.getElementById('result'),
-  quickSubmit = document.getElementById('quickSubmit'),
-  imagesDownAddress = document.getElementById('images-down-address'),
-  imagesDown = document.getElementById('images-down');
+var form = $('form'),
+  submit = $('submit'),
+  reset = $('reset'),
+  addAddress = $('addAddress'),
+  addAddressEnd = $('addAddressEnd'),
+  common = $('common'),
+  distinguish = $('distinguish'),
+  resultDiv = $('result'),
+  quickSubmit = $('quickSubmit'),
+  pageNum = $('pageNum'),
+  imagesDownAddress = $('images-down-address'),
+  imagesDown = $('images-down');
 
 var data = {};
 
@@ -104,6 +105,20 @@ quickSubmit.addEventListener('click', function(e) {
   }
 });
 
+function quickSerializeObject(obj) {
+  var setForm = '';
+  for (var i in obj) {
+    setForm += encodeURIComponent(i) + '=' + encodeURIComponent(obj[i]) + '&';
+  }
+  var pageIndex = parseInt(pageNum.value);
+  if (pageIndex != NaN && pageIndex > 0) {
+    setForm += 'pageNum=' + (pageIndex - 1);
+  } else {
+    setForm += 'pageNum=0';
+  }
+  return setForm;
+}
+
 function quickSubmitResult(e) {
   var itmes = [];
   try {
@@ -114,7 +129,7 @@ function quickSubmitResult(e) {
       }
     }
   } catch (err) {
-    console.log('nojson');
+    console.log(err);
   }
 
   ajax.post('connect.py', _serialize(itmes), result);
@@ -124,7 +139,7 @@ function quickSubmitResult(e) {
     for (var i of itmes) {
       setForm += 'pageAddress=' + encodeURIComponent('https://h.bilibili.com/') + i[0] + '&';
     }
-    setForm += 'common=3&imageAddress=暂不使用&imageFormat=jpg&imageFormat=png&imageFormat=gif'
+    setForm += 'common=3'
     return setForm;
   }
 }
@@ -168,7 +183,7 @@ function result(e) {
     }
     imagesDown.disabled = false;
   } catch (err) {
-    console.log('nojson');
+    console.log(err);
   }
 
   function _createDom(info, parent) {
@@ -212,15 +227,6 @@ function imagesResult(e) {
   }
 }
 
-function quickSerializeObject(obj) {
-  var setForm = '';
-  for (var i in obj) {
-    setForm += encodeURIComponent(i) + '=' + encodeURIComponent(obj[i]) + '&';
-  }
-  setForm += 'imageAddress=暂不使用&imageFormat=jpg&imageFormat=png&imageFormat=gif'
-  return setForm;
-}
-
 function serializeForm(form) {
   var setForm = '';
   for (var key in form) {
@@ -241,4 +247,8 @@ function serializeImages(images) {
   }
   imagesdata += 'path=' + encodeURIComponent(imagesDownAddress.value);
   return imagesdata;
+}
+
+function $(id) {
+  return document.getElementById(id);
 }

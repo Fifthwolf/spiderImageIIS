@@ -6,13 +6,13 @@ from bs4 import BeautifulSoup
 
 class HtmlParser(object):
 
-    def parse(self, page_url, site_common, html_cont):
+    def parse(self, page_url, site_common, html_cont, pageNum):
         soup = BeautifulSoup(html_cont, 'html.parser', from_encoding='utf-8')
-        data = self._get_data(page_url, site_common, soup)
+        data = self._get_data(page_url, site_common, soup, pageNum)
         return data
 
-    def _get_data(self, page_url, common, soup):
-        self.get_data = site_data.GetData(common)
+    def _get_data(self, page_url, common, soup, pageNum):
+        self.get_data = site_data.GetData(common, pageNum)
         res_data = {}
 
         #url地址

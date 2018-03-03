@@ -9,6 +9,7 @@ class SpiderMain(object):
         self.datas = []
         self.urls = info['urls']
         self.common = info['common']
+        self.pageNum = info['pageNum']
         self.downloader = html_downloader.HtmlDownloader()
         self.parser = html_parser.HtmlParser()
 
@@ -19,7 +20,7 @@ class SpiderMain(object):
                     html_cont = self.downloader.download(url)
                 except:
                     html_cont = ''
-                data = self.parser.parse(url, self.common, html_cont)
+                data = self.parser.parse(url, self.common, html_cont, self.pageNum)
                 self.datas.append(data)
         except:
             print 'craw failed'
