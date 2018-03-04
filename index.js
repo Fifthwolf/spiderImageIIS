@@ -11,7 +11,9 @@ var form = $('form'),
   imagesDownAddress = $('images-down-address'),
   imagesDown = $('images-down');
 
-var data = {};
+var data = {
+  'images': []
+};
 
 var ajax = {
   post: function(url, data, fn) {
@@ -28,7 +30,6 @@ var ajax = {
 }
 
 addAddress.addEventListener('click', function() {
-  reset.disabled = false;
   var input = document.createElement('input');
   input.setAttribute('type', 'text');
   input.setAttribute('name', 'pageAddress');
@@ -38,8 +39,6 @@ addAddress.addEventListener('click', function() {
 });
 
 submit.addEventListener('click', function() {
-  submit.disabled = true;
-  reset.disabled = false;
   var data = serializeForm(form);
   ajax.post('connect.py', data, result);
 });
@@ -154,7 +153,6 @@ imagesDown.addEventListener('click', function() {
 
 function resetFunc() {
   data = {};
-  reset.disabled = true;
   submit.disabled = false;
   imagesDown.disabled = true;
 
@@ -172,7 +170,6 @@ function resetFunc() {
 }
 
 function result(e) {
-  data.images = [];
   try {
     var result = JSON.parse(e);
     for (var i of result) {
