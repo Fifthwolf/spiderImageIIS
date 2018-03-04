@@ -25,12 +25,10 @@ class JsonData(object):
         data = {
             #主页推荐
             'homeurl0': 'https://api.vc.bilibili.com/link_draw/v2/Doc/index?type=recommend&page_num=',
-            'homeurl1': '&page_size=45',
             
             #分栏页面
             'detailurl0': 'https://api.vc.bilibili.com/link_draw/v2/Doc/list?category=',
             'detailurl1': '&page_num=',
-            'detailurl2': '&page_size=20',
             
             #主页最热
             '2': 'all&type=hot',
@@ -50,9 +48,9 @@ class JsonData(object):
             '9': 'draw&type=new'
         }
         if int(commonIndex) == 1:
-            url = data['homeurl0'] + pageNum + data['homeurl1']
+            url = data['homeurl0'] + pageNum
         else:
-            url = data['detailurl0'] + data[str(commonIndex)] + data['detailurl1'] + pageNum + data['detailurl2']
+            url = data['detailurl0'] + data[str(commonIndex)] + data['detailurl1'] + pageNum
         
         comments = requests.get(url)
         comments.encoding = 'utf-8'
