@@ -11,11 +11,13 @@
 [Bilibili相簿]
 (https://h.bilibili.com/ + 数字)
 
-[Bilibili相簿快速获取]
-可一键获取以下内容：
+[知乎问题回答]
+(https://www.zhihu.com/question/ + 问题编号数字 + /answer/ + 回答编号数字)
+
+## 快速获取
+[Bilibili相簿]
 
 主页推荐、主页最热、主页最新、插画最热、插画最新、漫画最热、漫画最新、其他最热、其他最新
 (主页推荐默认一页有45组画，其余一页有20组画，可调整页面序号改变获取内容)
 
-[知乎问题回答]
-(https://www.zhihu.com/question/ + 问题编号数字 + /answer/ + 回答编号数字)
+
