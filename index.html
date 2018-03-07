@@ -14,27 +14,29 @@
     <div class="head-img"></div>
     <div class="wrapper">
       <form id="main-form" action="connect.py" method="post">
-        <label for="">页面地址：</label>
-        <input type="button" id="addAddress" value="增加" />
-        <br />
-        <input type="text" name="pageAddress" class="pageAddress" value="http://"/>
-        <br id="addAddressEnd" />
-        <label for="">页面类型：</label>
-        <select name="common" id="common">
-          <option value="0">缺省（成功率较低）</option>
-          <option value="1">AcFun文章区</option>
-          <option value="2">Bilibili专栏</option>
-          <option value="3">Bilibili相簿</option>
-          <option value="4">知乎问题回答</option>
-        </select>
-        <input type="button" id="distinguish" value="自动识别" />
-        <br />
-        <div class="button">
-          <input type="button" id="submit" value="提交" />
-          <input type="button" id="reset" value="重置" />
+        <div class="form-wrapper">
+          <label for="">页面地址：</label>
+          <input type="button" id="addAddress" value="增加" />
+          <br />
+          <input type="text" name="pageAddress" class="pageAddress" value="http://"/>
+          <br id="addAddressEnd" />
+          <label for="">页面类型：</label>
+          <select name="common" id="common">
+            <option value="0">缺省（成功率较低）</option>
+            <option value="1">AcFun文章区</option>
+            <option value="2">Bilibili专栏</option>
+            <option value="3">Bilibili相簿</option>
+            <option value="4">知乎问题回答</option>
+          </select>
+          <input type="button" id="distinguish" value="自动识别" />
+          <br />
+          <div class="button">
+            <input type="button" id="submit" value="提交" />
+            <input type="button" id="reset" value="重置" />
+          </div>
+          <br />
+          <p>注意：添加多个页面地址时请保持页面地址类型一致</p>
         </div>
-        <br />
-        <p>注意：添加多个页面地址时请保持页面地址类型一致</p>
       </form>
       <form action="connect.py" class="bilibili">
         <div class="button" id="quickSubmit">
@@ -69,13 +71,13 @@
             <img src="{{图片地址}}" alt="">
           </div>
         </div>
-        -->
-      </div>
+      -->
     </div>
-  </main>
-  <footer>
-    <span>版本 0.0.1</span>
-  </footer>
+  </div>
+</main>
+<footer>
+  <span>版本 0.0.1</span>
+</footer>
 </body>
 <script src="index.js"></script>
 </html>
