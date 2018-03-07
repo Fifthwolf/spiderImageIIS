@@ -1,4 +1,4 @@
-var form = $('form'),
+var mainForm = $('main-form'),
   submit = $('submit'),
   reset = $('reset'),
   addAddress = $('addAddress'),
@@ -35,20 +35,20 @@ addAddress.addEventListener('click', function() {
   input.setAttribute('name', 'pageAddress');
   input.setAttribute('class', 'pageAddress');
   input.setAttribute('value', 'http://');
-  form.insertBefore(input, addAddressEnd);
+  mainForm.insertBefore(input, addAddressEnd);
 });
 
 submit.addEventListener('click', function() {
-  var data = serializeForm(form);
+  var data = serializeForm(mainForm);
   ajax.post('connect.py', data, result);
 });
 
 distinguish.addEventListener('click', function() {
   var website;
   try {
-    website = form.pageAddress[0].value;
+    website = mainForm.pageAddress[0].value;
   } catch (e) {
-    website = form.pageAddress.value;
+    website = mainForm.pageAddress.value;
   }
 
   const data = [
@@ -157,9 +157,9 @@ function resetFunc() {
   imagesDown.disabled = true;
 
   //页面地址栏清空
-  pageAddressInput = form.getElementsByClassName('pageAddress');
+  pageAddressInput = mainForm.getElementsByClassName('pageAddress');
   for (var i = pageAddressInput.length - 1; i >= 1; i--) {
-    form.removeChild(pageAddressInput[i]);
+    mainForm.removeChild(pageAddressInput[i]);
   }
 
   //结果清空
