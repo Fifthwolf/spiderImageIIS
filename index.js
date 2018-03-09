@@ -35,7 +35,7 @@ addAddress.addEventListener('click', function() {
   input.setAttribute('name', 'pageAddress');
   input.setAttribute('class', 'pageAddress');
   input.setAttribute('value', 'http://');
-  mainForm.getElementsByClassName('form-wrapper')[0].insertBefore(input, addAddressEnd);
+  mainForm.insertBefore(input, addAddressEnd);
 });
 
 submit.addEventListener('click', function() {
