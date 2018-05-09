@@ -1,7 +1,7 @@
 var mainForm = $('main-form'),
   submit = $('submit'),
   reset = $('reset'),
-  addAddress = $('addAddress'),
+  /*addAddress = $('addAddress'),*/
   addAddressEnd = $('addAddressEnd'),
   common = $('common'),
   distinguish = $('distinguish'),
@@ -29,34 +29,20 @@ var ajax = {
   }
 }
 
-addAddress.addEventListener('click', function() {
-  var input = document.createElement('input');
-  input.setAttribute('type', 'text');
-  input.setAttribute('name', 'pageAddress');
-  input.setAttribute('class', 'pageAddress');
-  input.setAttribute('value', 'http://');
-  mainForm.insertBefore(input, addAddressEnd);
-});
-
 submit.addEventListener('click', function() {
   var data = serializeForm(mainForm);
   ajax.post('connect.py', data, result);
 });
 
 distinguish.addEventListener('click', function() {
-  var website;
-  try {
-    website = mainForm.pageAddress[0].value;
-  } catch (e) {
-    website = mainForm.pageAddress.value;
-  }
-
   const data = [
     [/acfun\.cn\/a\/ac\d+/, 1],
     [/bilibili\.com\/read\/cv\d+/, 2],
     [/h\.bilibili\.com\/\d+/, 3],
     [/zhihu\.com\/question\/\d+\/answer\/\d+/, 4]
   ];
+
+  var website = mainForm.pageAddress.value.split('\n')[0];
 
   for (var i = 0, len = data.length; i < len; i++) {
     if (data[i][0].test(website)) {
@@ -228,10 +214,18 @@ function serializeForm(form) {
   var setForm = '';
   for (var key in form) {
     if (form.hasOwnProperty(key) && form[key].name != '') {
-      if (form[key].name == 'common') {
-        data.common = form[key].value;
+      switch (form[key].name) {
+        case 'pageAddress':
+          let pageValues = form[key].value.split('\n');
+          for (var i = 0, len = pageValues.length; i < len; i++) {
+            setForm += encodeURIComponent(form[key].name) + '=' + encodeURIComponent(pageValues[i]) + '&';
+          }
+          break;
+        case 'common':
+          data.common = form[key].value;
+          setForm += encodeURIComponent(form[key].name) + '=' + encodeURIComponent(form[key].value) + '&';
+          break;
       }
-      setForm += encodeURIComponent(form[key].name) + '=' + encodeURIComponent(form[key].value) + '&';
     }
   }
   return setForm.slice(0, setForm.length - 1);

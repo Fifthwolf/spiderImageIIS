@@ -16,10 +16,13 @@
     <div class="wrapper">
       <div class="form-wrapper form-box">
         <form id="main-form" action="connect.py" method="post">
-          <label for="">页面地址：</label>
+          <label for="pageAddress">页面地址</label>
+          <!--
           <input type="button" id="addAddress" value="增加" />
-          <br />
-          <input type="text" name="pageAddress" class="pageAddress" value="http://"/>
+          <br />-->
+          <!--
+          <input type="text" name="pageAddress" class="pageAddress" value="http://"/>-->
+          <textarea rows="8" cols="45" id="pageAddress" name="pageAddress" class="pageAddress">http://</textarea>
           <br id="addAddressEnd" />
           <label for="">页面类型：</label>
           <select name="common" id="common">

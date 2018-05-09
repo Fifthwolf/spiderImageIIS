@@ -67,11 +67,9 @@ main {
       margin-top: -10px; }
     .form-wrapper form:last-child {
       margin-bottom: 0; }
-    .form-wrapper form #addAddress {
-      display: inline-block;
-      margin: 5px 0 10px;
-      width: 60px;
-      height: 20px; }
+    .form-wrapper form .pageAddress {
+      margin-top: 5px;
+      resize: none; }
     .form-wrapper form #distinguish {
       margin-left: 10px;
       width: 60px;
