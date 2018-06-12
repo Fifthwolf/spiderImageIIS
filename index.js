@@ -179,7 +179,7 @@ function result(e) {
     function _createHead(info, parent) {
       var itemHead = _createElementHaveClass('div', 'item-head', '', parent);
       _createElementHaveClass('p', 'title', info.title, itemHead);
-      _createElementHaveClass('p', 'url', info.url, itemHead);
+      _createElementHaveClass('a', 'url', '<a href="' + info.url + '">' + info.url + '</a>', itemHead);
     }
 
     function _createImgwrapper(info, parent) {
