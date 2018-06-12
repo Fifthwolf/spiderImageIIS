@@ -1,7 +1,6 @@
 var mainForm = $('main-form'),
   submit = $('submit'),
   reset = $('reset'),
-  /*addAddress = $('addAddress'),*/
   addAddressEnd = $('addAddressEnd'),
   common = $('common'),
   distinguish = $('distinguish'),
