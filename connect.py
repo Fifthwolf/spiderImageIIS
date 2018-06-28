@@ -16,7 +16,7 @@ info = {
 #页面序号
 try:
     info['pageNum'] = form.get('pageNum')[0]
-except :
+except:
     info['pageNum'] = 0
 
 obj_spider = spider_main.SpiderMain(info)
