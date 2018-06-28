@@ -15,9 +15,9 @@ info = {
 
 #页面序号
 try:
-	info['pageNum'] = form.get('pageNum')[0]
+    info['pageNum'] = form.get('pageNum')[0]
 except :
-	info['pageNum'] = 0
+    info['pageNum'] = 0
 
 obj_spider = spider_main.SpiderMain(info)
 print obj_spider.craw()
