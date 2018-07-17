@@ -38,7 +38,8 @@ distinguish.addEventListener('click', function() {
     [/acfun\.cn\/a\/ac\d+/, 1],
     [/bilibili\.com\/read\/cv\d+/, 2],
     [/h\.bilibili\.com\/\d+/, 3],
-    [/zhihu\.com\/question\/\d+\/answer\/\d+/, 4]
+    [/zhihu\.com\/question\/\d+\/answer\/\d+/, 4],
+    [/pixiv\.net\/member_illust\.php\?.*illust_id=\d+/, 5]
   ];
 
   var website = mainForm.pageAddress.value.split('\n')[0];
