@@ -14,6 +14,9 @@
 [知乎问题回答]
 (https://www.zhihu.com/question/ + 问题编号数字 + /answer/ + 回答编号数字)
 
+[pixiv插图列表]
+(https://pixiv.net/member_illust.php?illust_id= + 数字)
+
 ## 快速获取
 [Bilibili相簿]
 
