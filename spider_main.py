@@ -20,6 +20,7 @@ class SpiderMain(object):
                     html_cont = self.downloader.download(url)
                 except:
                     html_cont = ''
+                # print html_cont
                 data = self.parser.parse(url, self.common, html_cont, self.pageNum)
                 self.datas.append(data)
         except:

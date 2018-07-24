@@ -14,8 +14,8 @@
 [知乎问题回答]
 (https://www.zhihu.com/question/ + 问题编号数字 + /answer/ + 回答编号数字)
 
-[pixiv插图列表]
-(https://pixiv.net/member_illust.php?illust_id= + 数字)
+[pixiv插图列表](暂未实现)
+(https://www.pixiv.net/member_illust.php?mode=manga&illust_id= + id数字)
 
 ## 快速获取
 [Bilibili相簿]
@@ -24,4 +24,4 @@
 (主页推荐默认一页有45组画，其余一页有20组画，可调整页面序号改变获取内容)
 
 ## 其他
-需要第三方库：BeautifulSoup4
+需要第三方库：Requests, BeautifulSoup4
