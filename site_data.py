@@ -7,7 +7,7 @@ import site_json
 
 class SiteData(object):
 
-    #页面全部
+    # 页面全部
     def title0(self, soup, url):
         return soup.title.get_text()
 
@@ -20,7 +20,7 @@ class SiteData(object):
             images_data.append(image['src'])
         return images_data
 
-    #AcFun文章区
+    # AcFun文章区
     def title1(self, soup, url):
         return soup.find('div', {"class": "art-title-head"}).find('div', {"class": "caption"}).get_text()
 
@@ -33,7 +33,7 @@ class SiteData(object):
             images_data.append(image['src'])
         return images_data
 
-    #Bilibili专栏
+    # Bilibili专栏
     def title2(self, soup, url):
         return soup.find('div', {"class": "head-container"}).find('h1', {"class": "title"}).get_text()
 
@@ -46,7 +46,7 @@ class SiteData(object):
             images_data.append('http:' + image['data-src'])
         return images_data
 
-    #Bilibili相簿
+    # Bilibili相簿
     def title3(self, soup, url):
         return site_json.GetData(url, 3).get_title_node()
 
@@ -59,7 +59,7 @@ class SiteData(object):
             images_data.append(image['img_src'])
         return images_data
 
-    #Bilibili相簿主页推荐、主页最热、最新;插画最热、最新;漫画最热、最新;其他最热、最新
+    # Bilibili相簿主页推荐、主页最热、最新;插画最热、最新;漫画最热、最新;其他最热、最新
     def title3_(self, soup, url):
         return soup.find('title').get_text()
 
@@ -72,9 +72,9 @@ class SiteData(object):
             ids_data.append(item['item']['doc_id'])
         return ids_data
 
-    #知乎问题回答
+    # 知乎问题回答
     def title4(self, soup, url):
-        return soup.find('div', {"class": "QuestionHeader"}).find('h1', {"class": "QuestionHeader-title"}).get_text()
+        return soup.find('head').find('title').get_text()
 
     def get_images4(self, soup, url):
         return soup.find('div', {"class": "QuestionAnswer-content"}).find_all('img')
@@ -84,6 +84,33 @@ class SiteData(object):
         for image in images:
             if not(re.match(r'^data', image['src'])):
                 images_data.append(image['src'])
+        return images_data
+
+    # pixiv插图列表
+    def title5(self, soup, url):
+        return soup.find('head').find('title').get_text()
+
+    def get_images5(self, soup, url):
+        return soup.find('section', {"class": "manga"}).find_all('img')
+
+    def append_images5(self, images):
+        images_data = []
+        for image in images:
+            if not(re.match(r'^data', image['src'])):
+                images_data.append(image['src'])
+        return images_data
+
+    # 微信公众号文章
+    def title6(self, soup, url):
+        return soup.find('div', {"class": "rich_media_inner"}).find('h2', {"class": "rich_media_title"}).get_text()
+
+    def get_images6(self, soup, url):
+        return soup.find('div', {"class": "rich_media_content"}).find_all('img')
+
+    def append_images6(self, images):
+        images_data = []
+        for image in images:
+            images_data.append(image['data-src'])
         return images_data
 
 class GetData(object):

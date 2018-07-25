@@ -40,6 +40,7 @@ distinguish.addEventListener('click', function() {
     [/h\.bilibili\.com\/\d+/, 3],
     [/zhihu\.com\/question\/\d+\/answer\/\d+/, 4],
     [/pixiv\.net\/member_illust\.php\?.*illust_id=\d+/, 5],
+    [/mp\.weixin\.qq\.com\/s\?__biz=.+&mid=\d+&idx=\d+&sn=.+/, 6],
   ];
 
   var website = mainForm.pageAddress.value.split('\n')[0];

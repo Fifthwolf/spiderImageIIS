@@ -17,6 +17,10 @@
 [pixiv插图列表](暂未实现)
 (https://www.pixiv.net/member_illust.php?mode=manga&illust_id= + id数字)
 
+[微信公众号文章]
+(https://mp.weixin.qq.com/s?__biz= 字符串 &mid= 数字 &idx= 数字 &sn= 16进制码)
+
+
 ## 快速获取
 [Bilibili相簿]
 
