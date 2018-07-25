@@ -88,7 +88,7 @@ class SiteData(object):
 
     # pixiv插图列表
     def title5(self, soup, url):
-        return soup.find('head').find('title').get_text()
+        return soup.title.get_text()
 
     def get_images5(self, soup, url):
         return soup.find('section', {"class": "manga"}).find_all('img')
@@ -96,8 +96,7 @@ class SiteData(object):
     def append_images5(self, images):
         images_data = []
         for image in images:
-            if not(re.match(r'^data', image['src'])):
-                images_data.append(image['src'])
+            images_data.append(image['data-src'])
         return images_data
 
     # 微信公众号文章
@@ -105,7 +104,7 @@ class SiteData(object):
         return soup.find('div', {"class": "rich_media_inner"}).find('h2', {"class": "rich_media_title"}).get_text()
 
     def get_images6(self, soup, url):
-        return soup.find('div', {"class": "rich_media_content"}).find_all('img')
+        return soup.find('section', {"class": "main"}).find_all('img')
 
     def append_images6(self, images):
         images_data = []

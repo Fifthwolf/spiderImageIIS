@@ -15,16 +15,16 @@ class HtmlParser(object):
         self.get_data = site_data.GetData(common, pageNum)
         res_data = {}
 
-        #url地址
+        # url地址
         res_data['url'] = page_url
 
-        #标题
+        # 标题
         try:
             res_data['title'] = self.get_data.get_title_node(soup, page_url)
         except :
             res_data['title'] = '无效地址'
         
-        #图片集
+        # 图片集
         try:
             res_data['images'] = self.get_data.get_images(soup, page_url)
         except:
