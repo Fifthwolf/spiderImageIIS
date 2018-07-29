@@ -14,7 +14,7 @@
 [知乎问题回答]
 (https://www.zhihu.com/question/ + 问题编号数字 + /answer/ + 回答编号数字)
 
-[pixiv插图列表](暂未实现)
+[pixiv插图列表][暂未实现]
 (https://www.pixiv.net/member_illust.php?mode=manga&illust_id= + id数字)
 
 [微信公众号文章]
